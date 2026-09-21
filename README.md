@@ -1,6 +1,6 @@
-# BeamFinds
+# BeamFinds App
 
-BeamFinds is a desktop mod downloader and manager for [BeamNG.drive](https://www.beamng.com/). It connects to BeamFinds to download mods directly into your BeamNG.drive mods folder and provides tools for keeping an installation organized.
+BeamFinds App is a desktop mod downloader and manager for the game [BeamNG.drive](https://www.beamng.com/). It connects to [BeamFinds](https://beamfinds.com) to download mods directly into your BeamNG.drive mods folder and provides tools for keeping an installation organized.
 
 ## Features
 
