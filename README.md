@@ -95,6 +95,11 @@ Issues and suggestions are welcome. Please do not submit or publish modified
 versions, forks, builds, websites, or derivative works without prior written
 permission from BeamFinds.
 
+[![Contributors](https://contrib.rocks/image?repo=beamfinds/beamfinds-app)](https://github.com/beamfinds/beamfinds-app/graphs/contributors)
+
+![Views](https://komarev.com/ghpvc/?username=beamfinds-app&label=Views)
+[![Star History](https://api.star-history.com/svg?repos=beamfinds/beamfinds-app&type=Date)](https://star-history.com/#beamfinds/beamfinds-app&Date)
+
 ## License
 
 BeamFinds is source-available for personal viewing and evaluation only. It is
