@@ -95,10 +95,23 @@ Issues and suggestions are welcome. Please do not submit or publish modified
 versions, forks, builds, websites, or derivative works without prior written
 permission from BeamFinds.
 
-[![Contributors](https://contrib.rocks/image?repo=beamfinds/beamfinds-app)](https://github.com/beamfinds/beamfinds-app/graphs/contributors)
+## Star History
 
-![Views](https://komarev.com/ghpvc/?username=beamfinds-app&label=Views)
 [![Star History](https://api.star-history.com/svg?repos=beamfinds/beamfinds-app&type=Date)](https://star-history.com/#beamfinds/beamfinds-app&Date)
+
+<div align="center">
+
+![Typing](https://readme-typing-svg.demolab.com?lines=BeamFinds;Mods+made+easy&center=true&width=500)
+
+![Stars](https://img.shields.io/github/stars/beamfinds/beamfinds-app?style=flat)
+![Forks](https://img.shields.io/github/forks/beamfinds/beamfinds-app)
+![Last commit](https://img.shields.io/github/last-commit/beamfinds/beamfinds-app)
+![License](https://img.shields.io/github/license/beamfinds/beamfinds-app)
+![Views](https://komarev.com/ghpvc/?username=beamfinds-app&label=Views)
+
+![Stack](https://skillicons.dev/icons?i=nodejs,js,linux)
+
+</div>
 
 ## License
 
