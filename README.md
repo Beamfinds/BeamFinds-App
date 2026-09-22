@@ -103,10 +103,10 @@ permission from BeamFinds.
 
 ![Typing](https://readme-typing-svg.demolab.com?lines=BeamFinds;Mods+made+easy&center=true&width=500)
 
-![Stars](https://img.shields.io/github/stars/beamfinds/beamfinds-app?style=flat)
-![Forks](https://img.shields.io/github/forks/beamfinds/beamfinds-app)
-![Last commit](https://img.shields.io/github/last-commit/beamfinds/beamfinds-app)
-![License](https://img.shields.io/github/license/beamfinds/beamfinds-app)
+![Stars](https://img.shields.io/github/stars/Beamfinds/BeamFinds-App?style=flat)
+![Forks](https://img.shields.io/github/forks/Beamfinds/BeamFinds-App)
+![Last commit](https://img.shields.io/github/last-commit/Beamfinds/BeamFinds-App)
+![License](https://img.shields.io/github/license/Beamfinds/BeamFinds-App)
 ![Views](https://komarev.com/ghpvc/?username=beamfinds-app&label=Views)
 
 ![Stack](https://skillicons.dev/icons?i=nodejs,js,linux)
