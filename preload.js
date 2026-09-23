@@ -43,7 +43,7 @@ contextBridge.exposeInMainWorld('electronAPI', {
     checkAppUpdate: () => ipcRenderer.invoke('check-app-update'),
     downloadAppUpdate: (version) => ipcRenderer.invoke('download-app-update', version),
     downloadBetaUpdate: (version) => ipcRenderer.invoke('download-beta-update', version),
-    runUpdateInstaller: (path) => ipcRenderer.invoke('run-update-installer', path),
+    runUpdateInstaller: () => ipcRenderer.invoke('run-update-installer'),
     getAppVersion: () => ipcRenderer.invoke('get-app-version'),
     isBetaBuild: () => ipcRenderer.invoke('is-beta-build'),
     verifyBetaAccess: () => ipcRenderer.invoke('verify-beta-access'),

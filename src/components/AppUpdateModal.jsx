@@ -22,7 +22,8 @@ export default function AppUpdateModal({ info, onClose }) {
         ? await window.electronAPI.downloadBetaUpdate(version)
         : await window.electronAPI.downloadAppUpdate(version)
       if (result?.success) {
-        await window.electronAPI.runUpdateInstaller(result.path)
+        const started = await window.electronAPI.runUpdateInstaller()
+        if (!started) throw new Error('Could not start the installer')
       } else {
         throw new Error(result?.error || 'Download failed')
       }

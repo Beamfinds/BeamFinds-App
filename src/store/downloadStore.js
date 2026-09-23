@@ -39,10 +39,10 @@ const useDownloadStore = create((set, get) => ({
 
     const toStart = queue.slice(0, slots)
     set((s) => ({ queue: s.queue.slice(toStart.length) }))
-    toStart.forEach((mod) => get().startDownload(mod, modsFolder, token))
+    toStart.forEach((mod) => get().startDownload(mod, token))
   },
 
-  async startDownload(mod, downloadFolder, token) {
+  async startDownload(mod, token) {
     set((s) => ({
       active: { ...s.active, [mod.modId]: { ...mod, progress: 0, speed: 0, eta: 0 } }
     }))
@@ -52,9 +52,7 @@ const useDownloadStore = create((set, get) => ({
       await window.electronAPI.startDownload({
         modId: mod.modId,
         modName: mod.modName,
-        modVersion: mod.modVersion || '1.0.0',
-        token,
-        downloadFolder
+        modVersion: mod.modVersion || '1.0.0'
       })
       set((s) => {
         const next = { ...s.active }
