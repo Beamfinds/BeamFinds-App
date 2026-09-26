@@ -1,6 +1,28 @@
 import useAppStore from '../store/appStore.js'
 import useDownloadStore from '../store/downloadStore.js'
-import { formatSpeed, formatEta } from '../utils.js'
+
+function fmt(bytes) {
+  if (bytes < 1024) return `${bytes} B/s`
+  if (bytes < 1024 * 1024) return `${(bytes / 1024).toFixed(1)} KB/s`
+  return `${(bytes / 1024 / 1024).toFixed(1)} MB/s`
+}
+
+function fmtEta(s) {
+  if (!s || s <= 0) return '--';
+
+  const minutes = s / 60;
+
+  if (minutes < 1) {
+    return `${Math.round(s)}s`;
+  }
+
+  if (minutes < 60) {
+    return `${minutes.toFixed(1)} min`;
+  }
+
+  const hours = minutes / 60;
+  return `${hours.toFixed(1)} h`;
+}
 
 export default function Dashboard() {
   const { addToast } = useAppStore()
@@ -60,8 +82,8 @@ export default function Dashboard() {
                 </div>
                 <div className="flex gap-3 mt-1 text-xs text-text-muted">
                   <span>{(d.progress || 0).toFixed(1)}%</span>
-                  <span>{formatSpeed(d.speed || 0)}</span>
-                  <span>ETA: {formatEta(d.eta || 0)}</span>
+                  <span>{fmt(d.speed || 0)}</span>
+                  <span>ETA: {fmtEta(d.eta || 0)}</span>
                 </div>
               </div>
               <button onClick={() => cancelDownload(d.modId)} className="w-8 h-8 flex items-center justify-center rounded-lg hover:bg-accent/15 hover:text-accent text-text-muted transition-colors">

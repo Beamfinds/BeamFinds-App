@@ -7,7 +7,7 @@ export default function Login() {
   const [error, setError] = useState(null)
 
   useEffect(() => {
-    window.electronAPI.onProtocolAuth(async (data) => {
+    const off = window.electronAPI.onProtocolAuth(async (data) => {
       if (!data?.token) return
       setStatus('verifying')
       setError(null)
@@ -17,6 +17,7 @@ export default function Login() {
         setError(result.error || 'Authentication failed')
       }
     })
+    return () => off?.()
   }, [])
 
   const handleLogin = async () => {
@@ -61,6 +62,15 @@ export default function Login() {
              status === 'waiting' || status === 'verifying' ? <><i className="fas fa-spinner fa-spin" /> {status === 'verifying' ? 'Verifying...' : 'Waiting for auth...'}</> :
              <><i className="fas fa-external-link-alt" /> Sign In with Browser</>}
           </button>
+
+          {status === 'waiting' && (
+            <p className="text-xs text-text-muted">
+              Browser didn't send you back?{' '}
+              <button onClick={() => setStatus('idle')} className="hover:text-primary transition-colors" style={{ background: 'none', border: 'none', cursor: 'pointer', color: 'inherit', textDecoration: 'underline' }}>
+                Try again
+              </button>
+            </p>
+          )}
 
           {error && (
             <p className="text-sm" style={{ color: '#e74c3c' }}>{error}</p>

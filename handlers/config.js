@@ -1,41 +1,22 @@
 const { ipcMain } = require('electron');
-const { getAuthToken, setAuthToken } = require('./auth');
-
-const hiddenKeys = ['authToken', 'authTokenEnc', 'refreshToken'];
-
-function publicConfig(store) {
-    const config = { ...store.store };
-    hiddenKeys.forEach(key => delete config[key]);
-    return config;
-}
-
-function readKey(store, key) {
-    if (key === 'authToken') return getAuthToken(store);
-    if (hiddenKeys.includes(key)) return undefined;
-    return store.get(key);
-}
-
-function writeKey(store, key, value) {
-    if (typeof key !== 'string' || !key) return;
-    if (key === 'authToken') return setAuthToken(store, value);
-    if (hiddenKeys.includes(key)) return;
-    if (value === null || value === undefined) {
-        store.delete(key);
-        return;
-    }
-    store.set(key, value);
-}
 
 function registerConfigHandlers(store) {
-    ipcMain.handle('get-config', () => publicConfig(store));
+    ipcMain.handle('get-config', () => store.store);
 
-    ipcMain.handle('set-config', (event, key, value) => writeKey(store, key, value));
+    ipcMain.handle('set-config', (event, key, value) => store.set(key, value));
 
-    ipcMain.handle('get-config-key', (event, key) => readKey(store, key));
+    ipcMain.handle('get-config-key', (event, key) => store.get(key));
 
-    ipcMain.handle('set-config-key', (event, key, value) => writeKey(store, key, value));
+    ipcMain.handle('set-config-key', (event, key, value) => {
+        store.set(key, value);
+    });
 
-    ipcMain.handle('get-full-config', () => publicConfig(store));
+    ipcMain.handle('get-full-config', () => {
+        const config = { ...store.store };
+        const sensitiveKeys = ['authToken', 'refreshToken'];
+        sensitiveKeys.forEach(key => delete config[key]);
+        return config;
+    });
 }
 
 module.exports = { registerConfigHandlers };

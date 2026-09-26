@@ -1153,7 +1153,7 @@ async function createPlaylistMod(playlistName, songs, modsFolder, mainWindow, so
 
     const Store = require('electron-store');
     const authStore = new Store();
-    const token = require('./auth').getAuthToken(authStore);
+    const token = authStore.get('authToken');
     if (token) {
         const { trackEvent } = require('./analytics');
         trackEvent('playlist_create', { mod_count: processedSongs.length }, token);

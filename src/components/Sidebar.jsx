@@ -9,6 +9,7 @@ const NAV = [
   { id: 'installed', icon: 'fa-box', label: 'Installed' },
   { id: 'updates', icon: 'fa-sync-alt', label: 'Updates' },
   { id: 'conflicts', icon: 'fa-code-branch', label: 'Conflicts' },
+  //{ id: 'playlist', icon: 'fa-music', label: 'Playlist Creator' },
   { id: 'settings', icon: 'fa-cog', label: 'Settings' },
 ]
 

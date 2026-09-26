@@ -1,6 +1,11 @@
 import { useState } from 'react'
 import { motion } from 'framer-motion'
-import { formatBytes } from '../utils.js'
+
+function fmt(bytes) {
+  if (!bytes) return '0 B'
+  if (bytes < 1024 * 1024) return `${(bytes / 1024).toFixed(1)} KB`
+  return `${(bytes / 1024 / 1024).toFixed(1)} MB`
+}
 
 export default function AppUpdateModal({ info, onClose }) {
   const [downloading, setDownloading] = useState(false)
@@ -22,8 +27,7 @@ export default function AppUpdateModal({ info, onClose }) {
         ? await window.electronAPI.downloadBetaUpdate(version)
         : await window.electronAPI.downloadAppUpdate(version)
       if (result?.success) {
-        const started = await window.electronAPI.runUpdateInstaller()
-        if (!started) throw new Error('Could not start the installer')
+        await window.electronAPI.runUpdateInstaller(result.path)
       } else {
         throw new Error(result?.error || 'Download failed')
       }
@@ -102,7 +106,7 @@ export default function AppUpdateModal({ info, onClose }) {
               <div className="h-full rounded-full transition-all duration-300" style={{ width: `${progress.progress || 0}%`, background: '#3498db' }} />
             </div>
             <p className="text-xs text-text-muted text-center">
-              Downloading... {formatBytes(progress.downloaded)} / {formatBytes(progress.total)}
+              Downloading... {fmt(progress.downloaded)} / {fmt(progress.total)}
             </p>
           </div>
         )}
