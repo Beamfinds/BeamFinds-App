@@ -1,13 +1,6 @@
 import { useState, useEffect, useCallback } from 'react'
 import useAppStore from '../store/appStore.js'
-
-function formatSize(bytes) {
-  if (!bytes) return null
-  const mb = bytes / (1024 * 1024)
-  if (mb < 1) return `${Math.round(bytes / 1024)} KB`
-  if (mb < 1024) return `${mb.toFixed(1)} MB`
-  return `${(mb / 1024).toFixed(2)} GB`
-}
+import { formatSize } from '../utils.js'
 
 function formatDate(iso) {
   if (!iso) return null

@@ -1,6 +1,7 @@
 const { ipcMain } = require('electron');
 const https = require('https');
 const { APP_VERSION } = require('./updates');
+const { getAuthToken } = require('./auth');
 
 const ANALYTICS_URL = 'https://beamfinds.com/api/analytics/app';
 
@@ -39,7 +40,7 @@ function trackEvent(event, metadata = {}, token = null) {
 
 function registerAnalyticsHandlers(store) {
     ipcMain.handle('track-event', (event, eventName, metadata) => {
-        const token = store.get('authToken');
+        const token = getAuthToken(store);
         trackEvent(eventName, metadata, token);
         return { success: true };
     });

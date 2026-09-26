@@ -33,7 +33,7 @@ function logger(level, category, event, detail) {
     if (!IS_BETA_BUILD) return;
     roll();
     const line = detail
-        ? `[${timestamp()}] [${level}] ${category}:${event} — ${detail}\n`
+        ? `[${timestamp()}] [${level}] ${category}:${event} - ${detail}\n`
         : `[${timestamp()}] [${level}] ${category}:${event}\n`;
     try {
         fs.appendFileSync(getLogPath(), line, 'utf8');

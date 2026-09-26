@@ -56,8 +56,10 @@ export async function checkBatchUpdates(mods, token) {
 
 export async function trackDownload(modId, token) {
   try {
-    const url = token ? `${BASE}/api/mods/track-download/${modId}?token=${token}` : `${BASE}/api/mods/track-download/${modId}`
-    await req(url, { method: 'POST' })
+    await req(`${BASE}/api/mods/track-download/${encodeURIComponent(modId)}`, {
+      method: 'POST',
+      headers: token ? { 'Authorization': `Bearer ${token}` } : {}
+    })
   } catch {}
 }
 

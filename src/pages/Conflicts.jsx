@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import useAppStore from '../store/appStore.js'
+import { formatSize } from '../utils.js'
 
 function formatAgo(iso) {
   if (!iso) return null
@@ -12,14 +13,6 @@ function formatAgo(iso) {
   const hours = Math.floor(mins / 60)
   if (hours < 24) return `${hours}h ago`
   return `${Math.floor(hours / 24)}d ago`
-}
-
-function formatSize(bytes) {
-  if (!bytes) return null
-  const mb = bytes / (1024 * 1024)
-  if (mb < 1) return `${Math.round(bytes / 1024)} KB`
-  if (mb < 1024) return `${mb.toFixed(1)} MB`
-  return `${(mb / 1024).toFixed(2)} GB`
 }
 
 function pairKey(pair) {
